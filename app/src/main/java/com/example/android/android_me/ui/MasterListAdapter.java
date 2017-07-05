@@ -20,8 +20,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -77,7 +78,16 @@ public class MasterListAdapter extends BaseAdapter {
         }
 
         // Set the image resource and return the newly created ImageView
-        imageView.setImageResource(mImageIds.get(position));
+//        imageView.setImageResource(mImageIds.get(position));
+
+        // Scale images and use Picasso for better performance
+
+        Picasso.with(mContext)
+                .load(mImageIds.get(position))
+                .resize(250, 250)
+                .centerInside()
+                .into(imageView);
+
         return imageView;
     }
 

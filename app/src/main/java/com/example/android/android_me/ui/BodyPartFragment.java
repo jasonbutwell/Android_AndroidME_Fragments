@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.android.android_me.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,11 @@ public class BodyPartFragment extends Fragment {
         // Otherwise, create a Log statement that indicates that the list was not found
         if(mImageIds != null){
             // Set the image resource to the list item at the stored index
-            imageView.setImageResource(mImageIds.get(mListIndex));
+//            imageView.setImageResource(mImageIds.get(mListIndex));
+
+            Picasso.with(getContext())
+                    .load(mImageIds.get(mListIndex))
+                    .into(imageView);
 
             // Set a click listener on the image view
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +89,11 @@ public class BodyPartFragment extends Fragment {
                         mListIndex = 0;
                     }
                     // Set the image resource to the new list item
-                    imageView.setImageResource(mImageIds.get(mListIndex));
+                    //imageView.setImageResource(mImageIds.get(mListIndex));
+
+                    Picasso.with(getContext())
+                            .load(mImageIds.get(mListIndex))
+                            .into(imageView);
                 }
             });
 
